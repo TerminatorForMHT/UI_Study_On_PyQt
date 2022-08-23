@@ -5,16 +5,26 @@
 # @Github  : https://github.com/TerminatorForMHT
 # @Software: PyCharm
 # @File    : First_UI.py
-
 import sys
+from PyQt5.QtWidgets import QWidget, QTextEdit, QVBoxLayout, QApplication
 
-from PyQt5.QtWidgets import QApplication, QWidget
+
+class TextEditDemo(QWidget):
+    def __init__(self, parent=None):
+        super(TextEditDemo, self).__init__(parent)
+        self.setWindowTitle("Demo TextEdit")
+        self.resize(960, 540)
+        self.move(50, 50)
+        self.edit = QTextEdit()
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.edit)
+        self.setLayout(self.layout)
+        # self.edit.setStyleSheet()
+        self.edit.setHtml('Test')
+
 
 if __name__ == '__main__':
-    first_app = QApplication(sys.argv)
-    first_window = QWidget()
-    first_window.resize(1920, 1280)
-    first_window.move(50, 50)
-    first_window.setWindowTitle('First App Window')
-    first_window.show()
-    sys.exit(first_app.exec())
+    app = QApplication(sys.argv)
+    win = TextEditDemo()
+    win.show()
+    sys.exit(app.exec())
